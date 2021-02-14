@@ -8,9 +8,13 @@ pipeline {
                 }
             }
             steps {
-                sh 'pip install flask'
+                sh 'pip install Flask flask-restful psycopg2 pyyaml requests lxml -i http://pypi.douban.com/simple --trusted-host pypi.douban.com'
             }
         }
+        stage('Start')
+            steps {
+                sh 'flask run --host=0.0.0.0 --port=80'
+            }
     }
     post {
         always {
