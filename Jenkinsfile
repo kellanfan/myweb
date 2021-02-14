@@ -1,9 +1,14 @@
 pipeline {
-    agent any
+    agent none
     stages {
         stage('build') {
+            agent {
+                docker {
+                    image 'python'
+                }
+            }
             steps {
-                sh 'ls -lart'
+                sh 'pip install flask'
             }
         }
     }
