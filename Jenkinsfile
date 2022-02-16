@@ -1,10 +1,9 @@
 pipeline {
-    agent none
+    agent { docker 'python:3.5.1' }
     stages {
-        stage('docker-build') {
-            agent any
+        stage('build') {
             steps {
-                sh 'docker build -t hub.kellan.com/kellan/myweb .'
+                sh 'python --version'
             }
         }
     }
